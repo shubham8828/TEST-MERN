@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import dotenv from "dotenv";
 import cors from 'cors'
 import route from "./route/user.route.js";
 
@@ -10,10 +9,9 @@ app.use(bodyParser.json())
 app.use(cors({origin:[""],
              methods:["POST","GET"],
              crentials:true}));
-dotenv.config();
 
-const port=process.env.PORT||7000
-const url=process.env.MONGO;
+const port=8000
+const url="mongodb+srv://skv66218828:skv66218828@cluster0.vhikf8f.mongodb.net/CRUD-App?retryWrites=true&w=majority&appName=Cluster0";
 
 
 app.listen(port,()=>{
@@ -28,7 +26,9 @@ mongoose.connect(url)
 })
 .catch((error)=>{console.log(error)})
 
-app.use('/api',route)
 app.use('/',(req,res)=>{
-  res.json{msg:"Hello"}
+  res.json({msg:"Hello"})
 })
+
+app.use('/api',route)
+
