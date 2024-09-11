@@ -29,3 +29,6 @@ mongoose.connect(url)
 .catch((error)=>{console.log(error)})
 
 app.use('/api',route)
+app.use('/',(req,res)=>{
+  res.json{msg:"Hello"}
+})
