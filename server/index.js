@@ -7,7 +7,9 @@ import route from "./route/user.route.js";
 
 const app=express();
 app.use(bodyParser.json())
-app.use(cors());
+app.use(cors({origin:[""],
+             methods:["POST","GET"],
+             crentials:true}));
 dotenv.config();
 
 const port=process.env.PORT||7000
